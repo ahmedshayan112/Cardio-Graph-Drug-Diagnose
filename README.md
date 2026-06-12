@@ -106,12 +106,7 @@ You can send a curl query to the server using the following syntax:
 curl -X POST "http://127.0.0.1:8000/query" \
      -H "Content-Type: application/json" \
      -d '{
-       "Age": "45",
-       "Gender": "Male",
-       "Chief Complaint": "High blood pressure and kidney disease",
-       "Previous Diagnoses": "Kidney disease, hypertension",
-       "Selected Symptoms": "fluid build up, fluid retention, high pressure",
-       "Free Text": "My ankles are severely swollen and pressure is very high."
+       "patientId": "4d77680a-0eba-4709-9f85-69a440cc83a8"
      }'
 ```
 
@@ -119,18 +114,21 @@ curl -X POST "http://127.0.0.1:8000/query" \
 
 ```json
 {
+  "patientId": "4d77680a-0eba-4709-9f85-69a440cc83a8",
   "id_1": {
     "Drug_Name": "Furosemide",
+    "Disease": "Kidney Disease",
     "Probablity": 0.88
   },
   "id_2": {
     "Drug_Name": "Lisinopril",
+    "Disease": "Hypertension",
     "Probablity": 0.76
   },
   "id_3": {
     "Drug_Name": "Metoprolol",
+    "Disease": "Hypertension",
     "Probablity": 0.62
   }
 }
 ```
-*(Note: If using `Retrever/query_pipeline.py` standalone script, the return JSON keys also include the matched `Disease` for each recommendation)*.

@@ -158,14 +158,17 @@ def execute_rag_pipeline(factors: PatientFactors) -> Dict[str, Any]:
     response_json = {
         "id_1": {
             "Drug_Name": top_recommendations[0]["Drug_Name"],
+            "Disease": top_recommendations[0]["Disease"],
             "Probablity": top_recommendations[0]["Probablity"]
         },
         "id_2": {
             "Drug_Name": top_recommendations[1]["Drug_Name"],
+            "Disease": top_recommendations[1]["Disease"],
             "Probablity": top_recommendations[1]["Probablity"]
         },
         "id_3": {
             "Drug_Name": top_recommendations[2]["Drug_Name"],
+            "Disease": top_recommendations[2]["Disease"],
             "Probablity": top_recommendations[2]["Probablity"]
         }
     }
