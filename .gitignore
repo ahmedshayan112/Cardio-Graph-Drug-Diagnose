@@ -1,0 +1,22 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Sensitive configuration files
+.env
+
+# Python caching & bytecode
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE/Editor metadata
+.qodo/
+.vscode/
+.idea/
+.project
+.pydevproject
