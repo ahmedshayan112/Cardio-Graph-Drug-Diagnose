@@ -50,14 +50,18 @@ async def query_rag(request: QueryRequest):
         factors = PatientFactors(**patient)
         results = execute_rag_pipeline(factors)
         
-        # 3. Store result in drug_diagnosis collection
+        # 3. Store result in drug_diagnosis collection (upsert if exists)
         diagnosis_doc = {
             "patientId": request.patientId,
             "id_1": results["id_1"],
             "id_2": results["id_2"],
             "id_3": results["id_3"]
         }
-        db["drug_diagnosis"].insert_one(diagnosis_doc)
+        db["drug_diagnosis"].replace_one(
+            {"patientId": request.patientId},
+            diagnosis_doc,
+            upsert=True
+        )
         
         # Remove MongoDB internal _id before returning (not JSON serializable)
         diagnosis_doc.pop("_id", None)
